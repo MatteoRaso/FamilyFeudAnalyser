@@ -15,7 +15,7 @@ def round(num_questions, odds_of_answering):
     num_questions -= 1
     while (num_strikes < 3) and (num_questions > 0):
         #More questions on the board means better chances.
-        if (np.random.random() * num_questions) > (1 - odds_of_answering):
+        if np.random.random() < odds_of_answering:
             A_score += question_value
             num_questions -= 1
 
@@ -24,7 +24,7 @@ def round(num_questions, odds_of_answering):
 
     #Family B goes in for the steal.
     if num_questions > 0:
-        if (np.random.random() * num_questions) > (1 - odds_of_answering):
+        if np.random.random() < odds_of_answering:
             B_score += (question_value + A_score)
             A_score = 0
 
